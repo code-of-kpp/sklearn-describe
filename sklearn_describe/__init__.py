@@ -6,8 +6,9 @@ def describe(obj):
     kw = dict()
 
     for ep in pkg_resources.iter_entry_points('sklearn.describe'):
-        func = ep.load()
+        check = ep.load()
 
-        kw = func(obj)
+        if check.applicable(obj):
+            kw = check.describe(obj, **kw)
 
     return kw

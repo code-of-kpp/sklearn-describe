@@ -1,6 +1,6 @@
 class PureChecker(object):
     @staticmethod
-    def appli(obj, **kwargs):
+    def applicable(obj, **kwargs):
         return True
 
     @staticmethod
