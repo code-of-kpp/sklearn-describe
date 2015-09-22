@@ -8,5 +8,6 @@ setup(
     entry_points='''
     [sklearn.describe]
     pure = sklearn_describe.pure:PureChecker
+    attrs = sklearn_describe.attributes:AttributesCheck
     ''',
 )
