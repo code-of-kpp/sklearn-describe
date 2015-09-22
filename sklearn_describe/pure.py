@@ -10,3 +10,5 @@ class PureChecker(object):
         else:
             kwargs['instance'] = True
         return kwargs
+
+    needs = ()
