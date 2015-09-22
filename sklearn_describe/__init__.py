@@ -19,13 +19,19 @@ def describe(obj, allowed=None):
         checks.insert(0, ep)
 
     checks.insert(0, sentinel)
+    once_looped = False
 
     while len(checks):
         ep = checks.pop()
 
         if ep is sentinel:
             if len(checks):
-                raise RuntimeError('Broken dependencies while describing')
+                if once_looped:
+                   raise RuntimeError('Broken dependencies while describing')
+                else:
+                   once_looped = True
+                   checks.insert(0, sentinel)
+                   continue
             else:
                 break
 
@@ -36,5 +42,6 @@ def describe(obj, allowed=None):
 
         if check.applicable(obj):
             kw = check.describe(obj, **kw)
+        checked.add(ep.name)
 
     return kw
