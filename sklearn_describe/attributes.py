@@ -7,11 +7,12 @@ ATTRIBUTES = (
     'partial_fit',
     'transform',
     'inverse_transform',
+    'decision_function',
     'score',
 )
 
 
-class AttributesCheck(object):
+class AttributesChecker(object):
 
     @staticmethod
     def applicable(obj, **kwargs):

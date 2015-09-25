@@ -39,8 +39,9 @@ def describe(obj, allowed=None):
 
         if not all(req in checked for req in check.needs):
            checks.insert(0, ep)
+           continue
 
-        if check.applicable(obj):
+        if check.applicable(obj, **kw):
             kw = check.describe(obj, **kw)
         checked.add(ep.name)
 
